@@ -1,20 +1,29 @@
+def isPrime(x):
+    if x % 2 == 0:
+        return False
+    for i in range(3, int(x**0.5)+1, 2):
+        if x % i == 0:
+            return False
+    return True
+def genPrime(currentPrime):
+    newPrime = currentPrime+1
+    while True:
+        if not isPrime(newPrime):
+            newPrime += 1
+        else:
+            break
+    return newPrime
+
 x = input('Do you want to see first prime number? y/n: ')
+
 if x == 'y':
     print (2)
-    formerprime = 2
-    l = 2
-    z = 10
-    while 1 != 2: #loop to keep asking use if he wants to see the prime number
-        y = input('Do you want to see the next prime number? y/n')
-        if y == 'y':
-            formerprime = l
-            z = z+10
-            for i in range(formerprime, z+1):
-                while z % i == 0:
-                    z = z/i
-                    l = i
-                print (l)
-
+    currentprime = 2
+    while True: #loop to keep asking us if he wants to see the prime number
+        x = input('Do you want to see the next prime number? y/n')
+        if x == 'y':
+            print (currentprime)
+            currentprime = genPrime(currentprime)
         else:
             break
 
